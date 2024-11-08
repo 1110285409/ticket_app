@@ -1,96 +1,70 @@
 @extends('layouts.app')
 
-@section('title', 'Perfil')
+@section('title', 'Perfil de Usuario')
 
 @section('content')
-<div class="container">
-    <header class="my-12 text-center">
-        <h1 class="text-4xl font-bold mb-8">Perfil de Usuario</h1>
+<div class="container mt-5">
+    <header class="text-center mb-5">
+        <h1 class="display-4">Perfil de {{ Auth::user()->nombre ?? 'Usuario' }} {{ Auth::user()->apellido ?? '' }}</h1>
     </header>
-    <div class="flex justify-center mb-8">
-        <div class="relative">
-            @if($user->photo)
-                <img id="photo-preview" src="{{ asset('storage/' . $user->photo) }}" alt="Foto de {{ $user->name }}" class="w-48 h-48 rounded-full object-cover">
-            @else
-                <div id="photo-preview" class="w-48 h-48 bg-gray-300 rounded-full flex items-center justify-center text-4xl font-bold text-white">
-                    {{ strtoupper(substr($user->name, 0, 1)) }}{{ strtoupper(substr($user->surname, 0, 1)) }}
-                </div>
-            @endif
-            <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 rounded-full opacity-0 hover:opacity-100 transition-opacity cursor-pointer">
-                <i class="fas fa-camera text-white text-2xl"></i>
-                <span class="text-white ml-2">Subir Foto</span>
+    <div class="text-center">
+        <div class="perfil-foto mb-4">
+            <img src="{{ Auth::user()->foto ?? 'default.jpg' }}" alt="Foto de {{ Auth::user()->nombre ?? 'Usuario' }}" class="rounded-circle img-thumbnail mx-auto d-block mb-3" style="width: 150px; height: 150px; object-fit: cover; border: 3px solid #007bff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <div class="d-flex justify-content-center mt-3">
+                <a href="#" class="mt-6 inline-block bg-white text-blue-600 font-semibold py-2 px-4 rounded hover:bg-blue-500 hover:text-white transition duration-300 me-2">
+                    <i class="fas fa-upload"></i> Cargar Imagen
+                </a>
+                <a href="#" class="mt-6 inline-block bg-white text-blue-600 font-semibold py-2 px-4 rounded hover:bg-blue-500 hover:text-white transition duration-300">
+                    <i class="fas fa-trash-alt"></i> Quitar Imagen
+                </a>
             </div>
-            <input type="file" id="photo" name="photo" class="absolute inset-0 opacity-0 cursor-pointer" onchange="previewPhoto(event)">
         </div>
-    </div>
-    <div class="flex justify-center mb-8">
-        <button onclick="document.getElementById('photo').click()" class="bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600 mr-4">Cargar Foto</button>
-        <form action="/perfil/quitar-foto" method="POST">
-            @csrf
-            <button type="submit" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">Quitar Foto</button>
-        </form>
-    </div>
-    <form action="/perfil" method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded shadow-md">
-        @csrf
-        <div class="mb-4">
-            <label for="name" class="block text-gray-700">Nombre:</label>
-            <input type="text" name="name" value="{{ $user->name }}" class="block w-full p-2 border border-gray-300 rounded">
-        </div>
-        <div class="mb-4">
-            <label for="surname" class="block text-gray-700">Apellido:</label>
-            <input type="text" name="surname" value="{{ $user->surname }}" class="block w-full p-2 border border-gray-300 rounded">
-        </div>
-        <div class="mb-4">
-            <label for="email" class="block text-gray-700">Email:</label>
-            <input type="email" name="email" value="{{ $user->email }}" class="block w-full p-2 border border-gray-300 rounded bg-gray-100 cursor-not-allowed" disabled>
-        </div>
-        <div class="mb-4">
-            <label for="phone" class="block text-gray-700">Teléfono:</label>
-            <input type="text" name="phone" value="{{ $user->phone }}" class="block w-full p-2 border border-gray-300 rounded">
-        </div>
-        <div class="mb-4">
-            <label for="address" class="block text-gray-700">Dirección:</label>
-            <input type="text" name="address" value="{{ $user->address }}" class="block w-full p-2 border border-gray-300 rounded">
-        </div>
-        <div class="mb-4">
-            <label for="bio" class="block text-gray-700">Biografía:</label>
-            <textarea name="bio" class="block w-full p-2 border border-gray-300 rounded">{{ $user->bio }}</textarea>
-        </div>
-        <button type="submit" class="bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600">Actualizar</button>
-    </form>
-    @if (session('success'))
-        <p class="text-green-500 mt-4">{{ session('success') }}</p>
-    @endif
-
-    <div class="mt-8">
-        <h2 class="text-2xl font-bold mb-4">Cambiar Contraseña</h2>
-        <form action="/perfil/cambiar-password" method="POST" class="bg-white p-6 rounded shadow-md">
-            @csrf
-            <div class="mb-4">
-                <label for="current_password" class="block text-gray-700">Contraseña Actual:</label>
-                <input type="password" name="current_password" class="block w-full p-2 border border-gray-300 rounded">
+        <div class="info-usuario text-start mb-4" style="max-width: 600px; margin: 0 auto; text-align: left;">
+            <div class="form-group mb-4">
+                <label for="nombre"><strong>Nombre:</strong></label>
+                <input type="text" class="form-control rounded-pill auto-size mb-3" id="nombre" value="{{ Auth::user()->nombre ?? '' }}" readonly>
             </div>
-            <div class="mb-4">
-                <label for="new_password" class="block text-gray-700">Nueva Contraseña:</label>
-                <input type="password" name="new_password" class="block w-full p-2 border border-gray-300 rounded">
+            <div class="form-group mb-4">
+                <label for="apellido"><strong>Apellido:</strong></label>
+                <input type="text" class="form-control rounded-pill auto-size mb-3" id="apellido" value="{{ Auth::user()->apellido ?? '' }}" readonly>
             </div>
-            <div class="mb-4">
-                <label for="new_password_confirmation" class="block text-gray-700">Confirmar Nueva Contraseña:</label>
-                <input type="password" name="new_password_confirmation" class="block w-full p-2 border border-gray-300 rounded">
+            <div class="form-group mb-4">
+                <label for="email"><strong>Email:</strong></label>
+                <input type="text" class="form-control rounded-pill auto-size mb-3" id="email" value="{{ Auth::user()->email ?? '' }}" readonly>
             </div>
-            <button type="submit" class="bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-600">Cambiar Contraseña</button>
+            <div class="form-group mb-4">
+                <label for="telefono"><strong>Teléfono:</strong></label>
+                <input type="text" class="form-control rounded-pill auto-size mb-3" id="telefono" value="{{ Auth::user()->telefono ?? '' }}" readonly>
+            </div>
+        </div>
+        <form class="mt-4" style="max-width: 600px; margin: 0 auto; text-align: left;">
+            <div class="form-group mb-4">
+                <label for="current-password"><strong>Contraseña Anterior:</strong></label>
+                <input type="password" class="form-control rounded-pill auto-size mb-3" id="current-password" placeholder="Ingrese su contraseña anterior">
+            </div>
+            <div class="form-group mb-4">
+                <label for="new-password"><strong>Nueva Contraseña:</strong></label>
+                <input type="password" class="form-control rounded-pill auto-size mb-3" id="new-password" placeholder="Ingrese su nueva contraseña">
+            </div>
+            <div class="form-group mb-4">
+                <label for="confirm-password"><strong>Confirmar Contraseña:</strong></label>
+                <input type="password" class="form-control rounded-pill auto-size mb-3" id="confirm-password" placeholder="Confirme su nueva contraseña">
+            </div>
+            <div class="text-center">
+                <a href="#" class="mt-6 inline-block bg-white text-blue-600 font-semibold py-2 px-4 rounded hover:bg-blue-500 hover:text-white transition duration-300">
+                    <i class="fas fa-save"></i> Guardar Cambios
+                </a>
+            </div>
         </form>
     </div>
 </div>
-
-<script>
-function previewPhoto(event) {
-    const reader = new FileReader();
-    reader.onload = function(){
-        const output = document.getElementById('photo-preview');
-        output.src = reader.result;
-    };
-    reader.readAsDataURL(event.target.files[0]);
-}
-</script>
 @endsection
+
+<style>
+.auto-size {
+    display: inline-block;
+    width: 100%; /* Asegura que todos los campos tengan el mismo ancho */
+    padding: 0.375rem 0.75rem;
+    border-radius: 50px; /* Aumenta el radio del borde para hacerlo más redondeado */
+}
+</style>
