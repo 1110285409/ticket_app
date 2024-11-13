@@ -7,8 +7,10 @@
     <header class="text-center py-12 bg-blue-600 text-white">
         <h1 class="text-4xl font-bold">Bienvenido a Softserve</h1>
         <p class="mt-4 text-xl">Soluciones de tickets de servicio para empleados</p>
-        <a href="{{ route('actividad.index') }}" class="mt-6 inline-block bg-white text-blue-600 font-semibold py-2 px-4 rounded hover:bg-blue-500 hover:text-white transition duration-300">Mis Actividades</a>
-        <a href="{{ route('catalogo.index') }}" class="mt-6 inline-block bg-white text-blue-600 font-semibold py-2 px-4 rounded hover:bg-blue-500 hover:text-white transition duration-300">Mi Catálogo</a>
+        <a href="{{ route('actividad.index') }}" class="mt-6 inline-block bg-white text-blue-600 
+            font-semibold py-2 px-4 rounded hover:bg-blue-500 hover:text-white transition duration-300">Mis Actividades</a>
+        <a href="{{ route('catalogo.index') }}" class="mt-6 inline-block bg-white text-blue-600 
+            font-semibold py-2 px-4 rounded hover:bg-blue-500 hover:text-white transition duration-300">Mi Catálogo</a>
     </header>
 
     <!-- los ultimos ticket -->
@@ -21,9 +23,12 @@
                 <thead>
                     <tr>
                         <!-- Encabezados de la tabla -->
-                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm font-semibold text-gray-600">Ticket</th>
-                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm font-semibold text-gray-600">Descripción</th>
-                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm font-semibold text-gray-600">Estado</th>
+                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm 
+                            font-semibold text-gray-600">Ticket</th>
+                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm 
+                            font-semibold text-gray-600">Descripción</th>
+                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm 
+                            font-semibold text-gray-600">Estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -148,11 +153,13 @@
     <section class="my-12">
         <h2 class="text-3xl font-bold text-center mb-8">Nuestras Funcionalidades</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-transform transform hover:scale-105 duration-300 hover:bg-blue-100">
+            <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-transform transform 
+                hover:scale-105 duration-300 hover:bg-blue-100">
                 <h3 class="text-2xl font-semibold mb-4">Gestión de Tickets</h3>
                 <p class="text-lg">Administra y resuelve tickets de manera eficiente.</p>
             </div>
-            <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-transform transform hover:scale-105 duration-300 hover:bg-blue-100">
+            <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-transform transform 
+                hover:scale-105 duration-300 hover:bg-blue-100">
                 <h3 class="text-2xl font-semibold mb-4">Soporte 24/7</h3>
                 <p class="text-lg">Estamos aquí para ayudarte en cualquier momento.</p>
             </div>
@@ -168,10 +175,14 @@
             <table class="min-w-full bg-white rounded-lg shadow-lg">
                 <thead>
                     <tr>
-                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm font-semibold text-gray-600">Ticket</th>
-                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm font-semibold text-gray-600">Estado</th>
-                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm font-semibold text-gray-600">Comentarios</th>
-                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm font-semibold text-gray-600">Nota Final</th>
+                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm font-semibold 
+                            text-gray-600">Ticket</th>
+                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm font-semibold 
+                            text-gray-600">Estado</th>
+                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm font-semibold 
+                            text-gray-600">Comentarios</th>
+                        <th class="py-2 px-4 border-b-2 border-gray-200 bg-gray-100 text-left text-sm font-semibold 
+                            text-gray-600">Nota Final</th>
                     </tr>
                 </thead>
                 <tbody id="ticketTableBody">
@@ -180,9 +191,11 @@
             </table>
         </div>
         <div class="flex justify-center items-center mt-8">
-            <button id="prevPage" class="bg-blue-500 text-white px-4 py-2 rounded-lg mr-4 hover:bg-blue-700 transition duration-300">Anterior</button>
+            <button id="prevPage" class="bg-blue-500 text-white px-4 py-2 rounded-lg mr-4 hover:bg-blue-700 
+                transition duration-300">Anterior</button>
             <span id="pageInfo" class="text-lg mx-4">Página 1 de 10</span>
-            <button id="nextPage" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">Siguiente</button>
+            <button id="nextPage" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 
+                transition duration-300">Siguiente</button>
         </div>
     </section>
     
@@ -253,13 +266,16 @@
 
     <section class="my-12 text-center">
         <h2 class="text-3xl font-bold text-center mb-8">Síguenos en Redes Sociales</h2>
-        <a href="https://www.facebook.com/tu-pagina" target="_blank" class="inline-block mx-2 text-blue-600 hover:text-blue-800 transition duration-300 active:text-blue-900">
+        <a href="https://www.facebook.com/tu-pagina" target="_blank" class="inline-block mx-2 text-blue-600 
+            hover:text-blue-800 transition duration-300 active:text-blue-900">
             <i class="fab fa-facebook fa-2x"></i>
         </a>
-        <a href="https://www.twitter.com/tu-pagina" target="_blank" class="inline-block mx-2 text-blue-600 hover:text-blue-800 transition duration-300 active:text-blue-900">
+        <a href="https://www.twitter.com/tu-pagina" target="_blank" class="inline-block mx-2 text-blue-600 
+            hover:text-blue-800 transition duration-300 active:text-blue-900">
             <i class="fab fa-twitter fa-2x"></i>
         </a>
-        <a href="https://www.linkedin.com/tu-pagina" target="_blank" class="inline-block mx-2 text-blue-600 hover:text-blue-800 transition duration-300 active:text-blue-900">
+        <a href="https://www.linkedin.com/tu-pagina" target="_blank" class="inline-block mx-2 text-blue-600 
+            hover:text-blue-800 transition duration-300 active:text-blue-900">
             <i class="fab fa-linkedin fa-2x"></i>
         </a>
     </section>

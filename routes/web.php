@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\actividadController;
 use App\Http\Controllers\CatalogoController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return redirect()->route('login.index'); 
@@ -41,6 +43,9 @@ Route ::get('/login', [SessionsController::class,'create'])
 
     Route ::get('/logout', [SessionsController::class,'destroy']) 
     ->name ('login.destroy');
+
+    Route ::get('/admin',[AdminController::class,'index'])
+    ->name('admin.index'); 
 
     Route::get('/perfil', [PerfilController::class, 'perfil']);
     Route::post('/perfil', [PerfilController::class, 'update']);

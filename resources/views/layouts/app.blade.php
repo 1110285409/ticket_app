@@ -24,10 +24,14 @@
 
         @if(auth()->check())
           <div class="flex space-x-4">
-            <a href="{{ route('home.index') }}" class="font-semibold border-2 border-white py-2 px-4 rounded-md hover:bg-white hover:text-indigo-700 inline-block">Home</a>
-            <a href="{{ route('actividad.index') }}" class="font-semibold border-2 border-white py-2 px-4 rounded-md hover:bg-white hover:text-indigo-700 inline-block">Actividad</a>
-            <a href="{{ route('catalogo.index') }}" class="font-semibold border-2 border-white py-2 px-4 rounded-md hover:bg-white hover:text-indigo-700 inline-block">Catálogo</a>
-            <a href="{{ url('/perfil') }}" class="font-semibold border-2 border-white py-2 px-4 rounded-md hover:bg-white hover:text-indigo-700 inline-block">Perfil</a> <!-- Enlace al perfil -->
+            <a href="{{ route('home.index') }}" class="font-semibold border-2 border-white py-2 px-4 
+              rounded-md hover:bg-white hover:text-indigo-700 inline-block">Home</a>
+            <a href="{{ route('actividad.index') }}" class="font-semibold border-2 border-white py-2 px-4 
+              rounded-md hover:bg-white hover:text-indigo-700 inline-block">Actividad</a>
+            <a href="{{ route('catalogo.index') }}" class="font-semibold border-2 border-white py-2 px-4 
+              rounded-md hover:bg-white hover:text-indigo-700 inline-block">Catálogo</a>
+            <a href="{{ url('/perfil') }}" class="font-semibold border-2 border-white py-2 px-4 
+              rounded-md hover:bg-white hover:text-indigo-700 inline-block">Perfil</a> <!-- Enlace al perfil -->
           </div>
         @endif
       </div>
@@ -38,14 +42,17 @@
             <p class="text-xl">Welcome <b>{{ auth()->user()->name }}</b></p>
           </li>
           <li>
-            <a href="{{ route('login.destroy') }}" class="font-bold py-3 px-4 rounded-md bg-red-500 hover:bg-red-600">Log out</a>
+            <a href="{{ route('login.destroy') }}" class="font-bold py-3 px-4 rounded-md bg-red-500 
+              hover:bg-red-600">Log out</a>
           </li>
         @else
           <li class="mx-6">
-            <a href="{{ route('login.index') }}" class="font-semibold hover:bg-indigo-700 py-3 px-4 rounded-md">Log in</a>
+            <a href="{{ route('login.index') }}" class="font-semibold hover:bg-indigo-700 py-3 px-4 
+              rounded-md">Log in</a>
           </li>
           <li>
-            <a href="{{ route('register.index') }}" class="font-semibold border-2 border-white py-2 px-4 rounded-md hover:bg-white hover:text-indigo-700">Register</a>
+            <a href="{{ route('register.index') }}" class="font-semibold border-2 border-white py-2 px-4 
+              rounded-md hover:bg-white hover:text-indigo-700">Register</a>
           </li>
         @endif
       </ul>

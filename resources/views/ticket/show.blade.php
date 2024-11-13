@@ -36,7 +36,8 @@
 
         <!-- Columna derecha: Botón y usuario -->
         <div class="col-span-1 bg-gray-200 p-4 rounded-lg shadow-md">
-            <button class="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-blue-600" onclick="window.location.href='{{ url('/ticket/request/' . $id) }}'">
+            <button class="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-blue-600" 
+                onclick="window.location.href='{{ url('/ticket/request/' . $id) }}'">
                 Pedir Ticket
             </button>
             <div class="mt-6">

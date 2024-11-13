@@ -13,8 +13,10 @@
     <!-- Contenedor de las tarjetas -->
     <div class="grid grid-cols-3 gap-6">
         @foreach ($servicios as $index => $servicio)
-            <a href="{{ url('/ticket/' . ($index + 1)) }}" class="flex items-center bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">
-                <img src="{{ asset('images/ticket_' . ($index + 1) . '.jpg') }}" alt="Ticket {{ $index + 1 }}" class="w-20 h-20 rounded-full mr-4">
+            <a href="{{ url('/ticket/' . ($index + 1)) }}" class="flex items-center bg-gray-100 p-4 rounded-lg 
+                shadow-md hover:shadow-lg transition duration-300">
+                <img src="{{ asset('images/ticket_' . ($index + 1) . '.jpg') }}" alt="Ticket {{ $index + 1 }}" 
+                    class="w-20 h-20 rounded-full mr-4">
                 <h3 class="text-xl font-medium">{{ $servicio }}</h3>
             </a>
         @endforeach
